@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Orçamento — Aniversário Dragon Ball Z</title>
+  <meta name="description" content="Proposta comercial de impressão 3D — Vegeta, Goku e chaveiros personalizados" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0c0f14;           /* fundo escuro elegante */
+      --card: #121722;         /* cards */
+      --muted: #c9d3e0;        /* texto secundário */
+      --text: #f5f7fb;         /* texto principal */
+      --brand: #ffb300;        /* amarelo DBZ */
+      --brand-2: #ff3b00;      /* laranja/ki */
+      --line: #212a3a;         /* linhas sutis */
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial; background: radial-gradient(1200px 800px at 15% 10%, #1b2130 0%, #0c0f14 60%), var(--bg); color: var(--text);}
+    a{color:var(--brand)}
+    img{max-width:100%; display:block}
+
+    .container{width:min(1100px, 92vw); margin-inline:auto;}
+    header{position:relative; padding: 28px 0 12px;}
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:20px}
+    .brand{display:flex; align-items:center; gap:14px}
+    .brand-logo{width:48px; height:48px; border-radius:12px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: var(--shadow)}
+    .brand h1{font-size:18px; margin:0}
+    .badge{font-size:12px; opacity:.8}
+
+    .hero{margin: 20px 0 36px; padding: 26px; border-radius: var(--radius); background: linear-gradient(160deg, rgba(255,179,0,.12), rgba(255,59,0,.08)); border:1px solid var(--line); box-shadow: var(--shadow); display:grid; grid-template-columns: 1.2fr .8fr; gap: 26px}
+    .hero .title{font-size: clamp(26px, 4vw, 38px); margin:2px 0 10px; line-height:1.12}
+    .hero .subtitle{color:var(--muted); margin:0 0 14px}
+    .hero .meta{display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:10px; margin-top:10px}
+    .chip{background:#0e1420; border:1px solid var(--line); padding:10px 12px; border-radius:12px; display:flex; align-items:center; gap:10px}
+    .chip strong{font-size:13px}
+    .chip span{color:var(--muted); font-size:12px}
+    .hero-illustration{align-self:stretch; border-radius:14px; overflow:hidden; border:1px solid var(--line); background:#0e1420}
+    .hero-illustration img{height:100%; object-fit:cover}
+
+    section{margin: 28px 0}
+    .section-title{font-size:18px; letter-spacing:.6px; margin: 0 0 12px; opacity:.9}
+    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap: 18px}
+
+    .card{grid-column: span 12; background: var(--card); border:1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px}
+    .card h3{margin: 0 0 8px; font-size: 16px}
+    .muted{color:var(--muted)}
+
+    /* Cards de itens */
+    .item{display:grid; grid-template-columns: 1fr; gap:14px}
+    .item .thumb{border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#0e1420}
+    .item h4{margin:0; font-size:16px}
+    .kv{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px}
+    .kv div{background:#0f1520; border:1px solid var(--line); padding:10px 12px; border-radius:12px; font-size:12px; color:var(--muted)}
+    .kv strong{display:block; color:#dfe7f5; font-size:12px}
+    table{width:100%; border-collapse: collapse; overflow:hidden; border-radius:12px; border:1px solid var(--line)}
+    th, td{padding:14px 12px; border-bottom:1px solid var(--line); text-align:left}
+    th{font-size:13px; color:#b9c4d6; background:#0f1520}
+    tr:last-child td{border-bottom:0}
+    .price{font-weight:700}
+
+    .gallery{display:grid; grid-template-columns: repeat(12, 1fr); gap: 12px}
+    .gallery figure{grid-column: span 6; background:#0e1420; border:1px solid var(--line); border-radius:12px; overflow:hidden}
+    .gallery figcaption{font-size:12px; color:var(--muted); padding:10px 12px; border-top:1px solid var(--line)}
+
+    .cta{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; padding: 16px; border:1px dashed var(--line); border-radius:14px; background: linear-gradient(145deg, rgba(255,179,0,.09), rgba(255,59,0,.07))}
+    .actions{display:flex; gap:10px}
+    .btn{appearance:none; border:0; outline:0; cursor:pointer; padding:12px 16px; border-radius:12px; font-weight:600; box-shadow: var(--shadow);}
+    .btn.primary{background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0f15}
+    .btn.ghost{background:#0f1520; color:#cfe2ff; border:1px solid var(--line)}
+
+    @media (min-width: 900px){
+      .col-6{grid-column: span 6}
+      .col-4{grid-column: span 4}
+      .col-8{grid-column: span 8}
+      .item{grid-template-columns: .9fr 1.1fr}
+    }
+
+    /* Impressão */
+    @media print{
+      :root{--bg:#fff; --card:#fff; --text:#000; --muted:#444; --line:#ddd}
+      body{background:#fff; color:#000}
+      .hero{border:1px solid #ddd; background:#fff}
+      .btn, .topbar .actions{display:none}
+      a{color:#000}
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-logo"></div>
+        <div>
+          <h1>Proposta de Personagens Dragon Ball Z</h1>
+          <div class="badge muted">Orçamento emitido em 13/11/2025</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero container">
+      <div>
+        <div class="title">Orçamento Aniversário Dragon Ball Z</div>
+        <p class="subtitle">Itens personalizados em impressão 3D para decoração de festa — Vegeta, Goku e chaveiros com nome/idade.</p>
+        <div class="meta">
+          <div class="chip"><div><strong>Cliente</strong><span>Joice</span></div></div>
+          <div class="chip"><div><strong>Contato</strong><span></span></div></div>
+          <div class="chip"><div><strong>Prazo estimado</strong><span>Conforme quantidade</span></div></div>
+          <div class="chip"><div><strong>Validade</strong><span>7 dias</span></div></div>
+        </div>
+      </div>
+      <div class="hero-illustration">
+        <img src="assets/capa.jpg" alt="Capa Dragon Ball Z">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2 class="section-title">Itens e valores</h2>
+      <div class="grid">
+        <!-- VEGETA COLORIDO -->
+        <article class="card item col-12">
+          <div class="thumb"><img src="assets/vegeta.jpeg" alt="Vegeta colorido"></div>
+          <div>
+            <h4>Vegeta (colorido)</h4>
+            <div class="kv" style="margin:10px 0 14px">
+              <div><strong>Tamanho</strong>20 cm (A) × 11,8 cm (L) × 3 cm (P)</div>
+              <div><strong>Acabamento</strong>Colorido</div>
+            </div>
+            <table>
+              <thead><tr><th>Quantidade</th><th class="price">Preço unitário</th></tr></thead>
+              <tbody>
+                <tr><td>1 unidade</td><td class="price">R$ 90,00</td></tr>
+                <tr><td>2–4 unidades</td><td class="price">R$ 81,00</td></tr>
+                <tr><td>5+ unidades</td><td class="price">R$ 72,00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- GOKU COLORIDO (PLACA) -->
+        <article class="card item col-12">
+          <div class="thumb"><img src="assets/goku_color.jpeg" alt="Goku colorido"></div>
+          <div>
+            <h4>Goku (colorido)</h4>
+            <div class="kv" style="margin:10px 0 14px">
+              <div><strong>Tamanho</strong>17 cm (A) × 17 cm (L) × 0,4 cm (P)</div>
+              <div><strong>Acabamento</strong>Colorido</div>
+            </div>
+            <table>
+              <thead><tr><th>Quantidade</th><th class="price">Preço unitário</th></tr></thead>
+              <tbody>
+                <tr><td>1 unidade</td><td class="price">R$ 50,00</td></tr>
+                <tr><td>2–4 unidades</td><td class="price">R$ 45,00</td></tr>
+                <tr><td>5+ unidades</td><td class="price">R$ 40,00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- GOKU COR ÚNICA 17 CM -->
+        <article class="card item col-12">
+          <div class="thumb"><img src="assets/goku_mono_17.jpeg" alt="Goku cor única 17 cm"></div>
+          <div>
+            <h4>Goku (cor única) — 17 cm</h4>
+            <div class="kv" style="margin:10px 0 14px">
+              <div><strong>Tamanho</strong>17 cm (altura)</div>
+              <div><strong>Acabamento</strong>Cor única</div>
+            </div>
+            <table>
+              <thead><tr><th>Quantidade</th><th class="price">Preço unitário</th></tr></thead>
+              <tbody>
+                <tr><td>1 unidade</td><td class="price">R$ 60,00</td></tr>
+                <tr><td>2–4 unidades</td><td class="price">R$ 54,00</td></tr>
+                <tr><td>5+ unidades</td><td class="price">R$ 48,00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- GOKU COR ÚNICA 12 CM -->
+        <article class="card item col-12">
+          <div class="thumb"><img src="assets/goku_mono_12.jpeg" alt="Goku cor única 12 cm"></div>
+          <div>
+            <h4>Goku (cor única) — 12 cm</h4>
+            <div class="kv" style="margin:10px 0 14px">
+              <div><strong>Tamanho</strong>12 cm (altura)</div>
+              <div><strong>Acabamento</strong>Cor única</div>
+            </div>
+            <table>
+              <thead><tr><th>Quantidade</th><th class="price">Preço unitário</th></tr></thead>
+              <tbody>
+                <tr><td>1 unidade</td><td class="price">R$ 50,00</td></tr>
+                <tr><td>2–4 unidades</td><td class="price">R$ 45,00</td></tr>
+                <tr><td>5+ unidades</td><td class="price">R$ 40,00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- CHAVEIRO PERSONALIZADO -->
+        <article class="card item col-12">
+          <div class="thumb"><img src="assets/chaveiro.jpeg" alt="Chaveiro personalizado Dragon Ball Z"></div>
+          <div>
+            <h4>Chaveiro com nome e idade (personalizado)</h4>
+            <div class="kv" style="margin:10px 0 14px">
+              <div><strong>Tamanho</strong>12 cm (L) × 5 cm (A)</div>
+              <div><strong>Acabamento</strong>Personalizado</div>
+            </div>
+            <table>
+              <thead><tr><th>Quantidade</th><th class="price">Preço unitário</th></tr></thead>
+              <tbody>
+                <tr><td>1 unidade</td><td class="price">R$ 12,00</td></tr>
+                <tr><td>2–4 unidades</td><td class="price">R$ 10,00</td></tr>
+                <tr><td>5+ unidades</td><td class="price">R$ 9,00</td></tr>
+              </tbody>
+            </table>
+            <p class="muted" style="margin-top:8px">* Valor informado <strong>sem a argola</strong>. Caso necessite, informar a quantidade para orçamento da argola.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="grid">
+        <div class="card col-6">
+          <h3>Observações</h3>
+          <ul class="muted">
+            <li>Todos os modelos podem ser personalizados (cor, tamanho, estilo). Consulte as cores disponíveis.</li>
+            <li>Os tamanhos podem ser ajustados conforme sua preferência.</li>
+          </ul>
+        </div>
+        <div class="card col-6">
+          <h3>Condições & Entrega</h3>
+          <ul class="muted">
+            <li>Prazo de produção e entrega variam conforme a quantidade solicitada.</li>
+            <li>Validade desta proposta: 7 dias a partir da emissão.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="cta">
+        <!-- <div>
+          <strong>Pronto para seguir?</strong>
+          <div class="muted">Confirme por WhatsApp ou responda este e-mail.</div>
+        </div> -->
+        <div class="actions">
+          <!-- <a class="btn ghost" href="#duvidas">Tirar dúvidas</a> -->
+          <a class="btn primary" href="https://wa.me/5581984778158">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-bottom:40px">
+      <div class="grid">
+        <!-- <div class="card col-6">
+          <h3>Empresa</h3>
+          <p class="muted">Sua marca · CNPJ —<br>Endereço —<br>Contato —</p>
+        </div> -->
+        <div class="card col-6">
+          <p class="muted">Última atualização: 13/11/2025</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
